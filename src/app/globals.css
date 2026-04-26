@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-heebo: "Heebo", sans-serif;
+  --font-frank-ruhl: "Frank Ruhl Libre", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f2f7f0;
+  color: #1e4219;
+  font-family: var(--font-heebo), sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+section {
+  overflow: hidden;
+}
