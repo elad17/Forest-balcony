@@ -16,9 +16,9 @@ export default function HeroSection() {
           className="object-cover object-center"
           sizes="100vw"
         />
-        {/* Elegant gradient — light on right, dark on left for RTL text */}
-        <div className="absolute inset-0 bg-gradient-to-l from-black/10 via-black/40 to-black/75" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+        {/* Overlay — darkens uniformly so text is readable over lush greenery */}
+        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
       </div>
 
       {/* Content — aligned right (RTL start) */}
