@@ -74,11 +74,9 @@ export const BEFORE_AFTER_PAIRS: BeforeAfterPair[] = [
     caption: "מרפסת ריקה → גן ירוק עם כיסא נדנדה ועציצים",
   },
   {
-    beforeUrl:
-      "https://images.unsplash.com/photo-6yIM4DTOTQs?w=700&q=80",
-    afterUrl:
-      "https://images.unsplash.com/photo-1477101718137-d1ac9f27600b?w=700&q=80",
-    caption: "מעקה חשוף → פרחים צבעוניים כל השנה",
+    beforeUrl: "/images/before-after/before-3.png",
+    afterUrl: "/images/before-after/after-3.jpg",
+    caption: "פרגולה שוממת → גן ירוק ומוריק עם מטפסים",
   },
 ];
 
