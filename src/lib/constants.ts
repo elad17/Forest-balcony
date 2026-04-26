@@ -64,11 +64,9 @@ export const GARDEN_STYLES: GardenStyle[] = [
 
 export const BEFORE_AFTER_PAIRS: BeforeAfterPair[] = [
   {
-    beforeUrl:
-      "https://images.unsplash.com/photo-xTYgMLnTJUo?w=700&q=80",
-    afterUrl:
-      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=700&q=80",
-    caption: "מרפסת ריקה ומשעממת → גן ים-תיכוני מלבלב",
+    beforeUrl: "/images/before-after/before-1.png",
+    afterUrl: "/images/before-after/after-1.jpg",
+    caption: "מרפסת ריקה ושוממת → גן ירק ופרחים שופע",
   },
   {
     beforeUrl:
