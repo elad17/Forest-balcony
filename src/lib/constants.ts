@@ -65,21 +65,21 @@ export const GARDEN_STYLES: GardenStyle[] = [
 export const BEFORE_AFTER_PAIRS: BeforeAfterPair[] = [
   {
     beforeUrl:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80",
+      "https://images.unsplash.com/photo-xTYgMLnTJUo?w=700&q=80",
     afterUrl:
       "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=700&q=80",
-    caption: "מרפסת בטון ריקה → גן ים-תיכוני מלבלב",
+    caption: "מרפסת ריקה ומשעממת → גן ים-תיכוני מלבלב",
   },
   {
     beforeUrl:
-      "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=700&q=80",
+      "https://images.unsplash.com/photo-nw2qOMTBoPE?w=700&q=80",
     afterUrl:
       "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=700&q=80",
-    caption: "מרפסת אחסון → גן ירק שופע",
+    caption: "מרפסת שוממת → גן ירק שופע",
   },
   {
     beforeUrl:
-      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80",
+      "https://images.unsplash.com/photo-6yIM4DTOTQs?w=700&q=80",
     afterUrl:
       "https://images.unsplash.com/photo-1477101718137-d1ac9f27600b?w=700&q=80",
     caption: "מעקה חשוף → פרחים צבעוניים כל השנה",
