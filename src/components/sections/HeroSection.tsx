@@ -1,83 +1,85 @@
 import Link from "next/link";
+import Image from "next/image";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import CalendlyButton from "@/components/ui/CalendlyButton";
-import Button from "@/components/ui/Button";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1600&q=85')",
-        }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-forest-800/70 via-forest-800/50 to-forest-800/80" />
-
-      {/* Floating leaves decoration */}
-      <div className="absolute top-20 start-10 text-5xl animate-float opacity-40 hidden md:block">
-        🌿
-      </div>
-      <div
-        className="absolute top-40 end-16 text-4xl animate-float opacity-30 hidden md:block"
-        style={{ animationDelay: "2s" }}
-      >
-        🍃
-      </div>
-      <div
-        className="absolute bottom-32 start-20 text-3xl animate-float opacity-25 hidden md:block"
-        style={{ animationDelay: "4s" }}
-      >
-        🌱
+    <section className="relative min-h-screen flex items-end md:items-center overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/hero-bg.jpg"
+          alt="מרפסת בוטיק מעוצבת"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        {/* Elegant gradient — light on right, dark on left for RTL text */}
+        <div className="absolute inset-0 bg-gradient-to-l from-black/10 via-black/40 to-black/75" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in">
-        <div className="inline-flex items-center gap-2 bg-forest-400/30 backdrop-blur-sm text-forest-100 border border-forest-400/40 rounded-full px-4 py-2 text-sm mb-6">
-          🌿 גינון בוטיק למרפסות
-        </div>
+      {/* Content — aligned right (RTL start) */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-12 pb-24 pt-32 md:py-0">
+        <div className="max-w-xl animate-fade-in">
 
-        <h1 className="font-display text-5xl md:text-7xl font-bold text-white leading-tight mb-4">
-          המרפסת שלך
-          <br />
-          <span className="text-forest-200">יכולה להיות</span>
-          <br />
-          גן עדן
-        </h1>
+          {/* Eyebrow */}
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 text-white/90 text-sm font-medium tracking-wide mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-forest-400 inline-block" />
+            גינון בוטיק למרפסות
+          </div>
 
-        <p className="text-forest-100 text-xl md:text-2xl mb-10 font-light max-w-2xl mx-auto">
-          עיצוב גינות בוטיק למרפסות — בהתאמה אישית מלאה
-          <br />
-          <span className="text-forest-200 text-lg">
-            מגינת ירק ועד גן פרחים צבעוני
-          </span>
-        </p>
+          {/* Headline */}
+          <h1 className="font-display font-bold text-white leading-[1.1] mb-6">
+            <span className="block text-5xl md:text-6xl lg:text-7xl">
+              המרפסת שלך
+            </span>
+            <span className="block text-5xl md:text-6xl lg:text-7xl text-forest-200 mt-1">
+              יכולה להיות
+            </span>
+            <span className="block text-6xl md:text-7xl lg:text-8xl mt-1">
+              גן עדן
+            </span>
+          </h1>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Link href="/questionnaire">
-            <Button variant="bloom" size="lg" className="w-full sm:w-auto">
-              ✨ קבל הדמיה בחינם
-            </Button>
-          </Link>
-          <WhatsAppButton size="lg" label="דברו איתי" />
-          <CalendlyButton size="lg" label="קבע ביקור בית" />
-        </div>
+          {/* Subtitle */}
+          <p className="text-white/80 text-lg md:text-xl font-light leading-relaxed mb-10 max-w-md">
+            עיצוב גינות בוטיק למרפסות בהתאמה אישית מלאה —
+            מגינת ירק ועד גן פרחים מרהיב
+          </p>
 
-        {/* Trust badges */}
-        <div className="mt-12 flex flex-wrap gap-6 justify-center text-forest-200 text-sm">
-          <span className="flex items-center gap-2">✅ ייעוץ ראשוני חינם</span>
-          <span className="flex items-center gap-2">🌱 צמחים ממשתלות מקומיות</span>
-          <span className="flex items-center gap-2">📍 ביקור בית עד הבית</span>
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-3 mb-12">
+            <Link href="/questionnaire">
+              <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-forest-400 hover:bg-forest-600 text-white font-semibold px-7 py-4 rounded-2xl text-base shadow-lg shadow-forest-900/30 transition-all duration-200 hover:scale-105 active:scale-95">
+                ✨ קבל הדמיה בחינם
+              </button>
+            </Link>
+            <WhatsAppButton size="lg" label="דברו איתי" />
+            <CalendlyButton size="lg" label="קבע ביקור" />
+          </div>
+
+          {/* Trust row */}
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-white/60 text-sm">
+            <span className="flex items-center gap-1.5">
+              <span className="text-forest-400">✓</span> ייעוץ ראשוני חינם
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="text-forest-400">✓</span> צמחים ממשתלות מקומיות
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="text-forest-400">✓</span> ביקור בית עד אליך
+            </span>
+          </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 animate-bounce">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M12 5v14M5 12l7 7 7-7" />
-        </svg>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/40">
+        <span className="text-xs tracking-widest">גלול</span>
+        <div className="w-px h-8 bg-gradient-to-b from-white/40 to-transparent animate-bounce" />
       </div>
     </section>
   );
