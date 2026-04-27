@@ -11,8 +11,8 @@ export default function BeforeAfterCard({ pair }: { pair: BeforeAfterPair }) {
   const updateDivider = useCallback((clientX: number) => {
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
-    // RTL: invert direction
-    const pct = ((rect.right - clientX) / rect.width) * 100;
+    // LTR calc: handle follows mouse left↔right naturally
+    const pct = ((clientX - rect.left) / rect.width) * 100;
     setDivider(Math.min(95, Math.max(5, pct)));
   }, []);
 
@@ -26,14 +26,10 @@ export default function BeforeAfterCard({ pair }: { pair: BeforeAfterPair }) {
     },
     [updateDivider]
   );
-  const onMouseUp = () => {
-    isDragging.current = false;
-  };
+  const onMouseUp = () => { isDragging.current = false; };
 
   const onTouchMove = useCallback(
-    (e: React.TouchEvent) => {
-      updateDivider(e.touches[0].clientX);
-    },
+    (e: React.TouchEvent) => { updateDivider(e.touches[0].clientX); },
     [updateDivider]
   );
 
@@ -48,25 +44,8 @@ export default function BeforeAfterCard({ pair }: { pair: BeforeAfterPair }) {
         onMouseLeave={onMouseUp}
         onTouchMove={onTouchMove}
       >
-        {/* Before image */}
+        {/* After image — base layer, always visible (left side) */}
         <div className="absolute inset-0">
-          <Image
-            src={pair.beforeUrl}
-            alt="לפני"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
-          <span className="absolute top-3 end-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">
-            לפני
-          </span>
-        </div>
-
-        {/* After image — clipped from the right (RTL) */}
-        <div
-          className="absolute inset-0"
-          style={{ clipPath: `inset(0 0 0 ${100 - divider}%)` }}
-        >
           <Image
             src={pair.afterUrl}
             alt="אחרי"
@@ -74,18 +53,35 @@ export default function BeforeAfterCard({ pair }: { pair: BeforeAfterPair }) {
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 33vw"
           />
-          <span className="absolute top-3 start-3 bg-forest-600/90 text-white text-xs px-2 py-1 rounded-full">
-            אחרי
+          <span className="absolute top-3 end-3 bg-forest-600/90 text-white text-xs px-2 py-1 rounded-full">
+            אחרי ✨
           </span>
         </div>
 
-        {/* Drag handle */}
+        {/* Before image — top layer, clips from left by divider% → shows on RIGHT */}
+        <div
+          className="absolute inset-0"
+          style={{ clipPath: `inset(0 0 0 ${divider}%)` }}
+        >
+          <Image
+            src={pair.beforeUrl}
+            alt="לפני"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+          <span className="absolute top-3 start-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">
+            לפני
+          </span>
+        </div>
+
+        {/* Drag handle — follows divider from left */}
         <div
           className="absolute top-0 bottom-0 w-1 bg-white/90 shadow-lg flex items-center justify-center"
-          style={{ right: `${divider}%`, transform: "translateX(50%)" }}
+          style={{ left: `${divider}%`, transform: "translateX(-50%)" }}
         >
-          <div className="w-8 h-8 bg-white rounded-full shadow-lg border-2 border-forest-400 flex items-center justify-center text-forest-600 font-bold text-xs select-none">
-            ↔
+          <div className="w-9 h-9 bg-white rounded-full shadow-lg border-2 border-forest-400 flex items-center justify-center text-forest-600 select-none text-sm">
+            ⇔
           </div>
         </div>
       </div>
