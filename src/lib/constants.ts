@@ -66,17 +66,17 @@ export const BEFORE_AFTER_PAIRS: BeforeAfterPair[] = [
   {
     beforeUrl: "/images/before-after/before-1.png",
     afterUrl: "/images/before-after/after-1.jpg",
-    caption: "גן ירק ופרחים שופע ← מרפסת ריקה ושוממת",
+    caption: "מרפסת ריקה ושוממת ← גן ירק ופרחים שופע",
   },
   {
     beforeUrl: "/images/before-after/before-2.png",
     afterUrl: "/images/before-after/after-2.jpg",
-    caption: "גן ירוק עם כיסא נדנדה ועציצים ← מרפסת ריקה",
+    caption: "מרפסת ריקה ← גן ירוק עם כיסא נדנדה ועציצים",
   },
   {
     beforeUrl: "/images/before-after/before-3.png",
     afterUrl: "/images/before-after/after-3.jpg",
-    caption: "גן ירוק ומוריק עם מטפסים ← פרגולה שוממת",
+    caption: "פרגולה שוממת ← גן ירוק ומוריק עם מטפסים",
   },
 ];
 

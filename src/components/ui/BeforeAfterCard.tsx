@@ -80,7 +80,10 @@ export default function BeforeAfterCard({ pair }: { pair: BeforeAfterPair }) {
           className="absolute top-0 bottom-0 w-1 bg-white/90 shadow-lg flex items-center justify-center"
           style={{ left: `${divider}%`, transform: "translateX(-50%)" }}
         >
-          <div className="w-8 h-8 bg-white rounded-full shadow-lg border-2 border-forest-400 select-none" />
+          <div className="w-10 h-10 bg-white rounded-full shadow-lg border-2 border-forest-400 select-none flex items-center justify-center gap-0.5">
+            <span className="text-forest-600 text-xs font-bold">◀</span>
+            <span className="text-forest-600 text-xs font-bold">▶</span>
+          </div>
         </div>
       </div>
 
