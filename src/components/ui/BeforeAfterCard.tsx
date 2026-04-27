@@ -80,15 +80,11 @@ export default function BeforeAfterCard({ pair }: { pair: BeforeAfterPair }) {
           className="absolute top-0 bottom-0 w-1 bg-white/90 shadow-lg flex items-center justify-center"
           style={{ left: `${divider}%`, transform: "translateX(-50%)" }}
         >
-          <div className="w-10 h-10 bg-white rounded-full shadow-lg border-2 border-forest-400 flex items-center justify-center select-none gap-0.5">
-            <span className="text-forest-600 text-sm animate-[ping_1.5s_ease-in-out_infinite] opacity-70">←</span>
-            <span className="text-forest-400 text-sm">→</span>
-          </div>
+          <div className="w-8 h-8 bg-white rounded-full shadow-lg border-2 border-forest-400 select-none" />
         </div>
       </div>
 
       <div className="px-4 py-3 text-center">
-        <p className="text-forest-500 text-xs mb-0.5">← גרור לגילוי הגינה</p>
         <p className="text-forest-700 text-sm font-medium">{pair.caption}</p>
       </div>
     </div>
