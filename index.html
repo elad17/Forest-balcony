@@ -5,9 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ניסים צרפתי ובניו | בנייה ויזמות | התחדשות עירונית</title>
   <meta name="description" content="עסק מורשה ניסים צרפתי ובניו - בנייה ויזמות, פינוי בינוי והתחדשות עירונית. ליווי מקצועי לבעלי דירות מתחילת הדרך ועד קבלת המפתח." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    @font-face { font-family: 'Heebo'; src: url('assets/fonts/heebo-300.ttf'); font-weight: 300; }
+    @font-face { font-family: 'Heebo'; src: url('assets/fonts/heebo-400.ttf'); font-weight: 400; }
+    @font-face { font-family: 'Heebo'; src: url('assets/fonts/heebo-500.ttf'); font-weight: 500; }
+    @font-face { font-family: 'Heebo'; src: url('assets/fonts/heebo-600.ttf'); font-weight: 600; }
+    @font-face { font-family: 'Heebo'; src: url('assets/fonts/heebo-700.ttf'); font-weight: 700; }
+    @font-face { font-family: 'Heebo'; src: url('assets/fonts/heebo-800.ttf'); font-weight: 800; }
+    @font-face { font-family: 'Heebo'; src: url('assets/fonts/heebo-900.ttf'); font-weight: 900; }
+  </style>
   <style>
     /* ===== RESET & BASE ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -79,13 +85,15 @@
       border-radius: 2px;
     }
     .reveal {
-      opacity: 0;
-      transform: translateY(32px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
+    .js-animations .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+    }
     .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+      opacity: 1 !important;
+      transform: translateY(0) !important;
     }
 
     /* ===== NAVBAR ===== */
@@ -203,7 +211,7 @@
       inset: 0;
       background:
         linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.85) 100%),
-        url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80') center/cover no-repeat;
+        url('assets/hero-bg.jpg') center/cover no-repeat;
     }
     .hero-texture {
       position: absolute;
@@ -903,7 +911,7 @@
       <div class="about-grid">
         <div class="about-img-wrap reveal">
           <img
-            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80"
+            src="assets/about-img.jpg"
             alt="בניית מגדל מגורים"
             class="about-img"
           />
@@ -1442,7 +1450,8 @@
     mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
     mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('open')));
 
-    // Scroll reveal
+    // Scroll reveal — only activate animations once JS runs
+    document.documentElement.classList.add('js-animations');
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
