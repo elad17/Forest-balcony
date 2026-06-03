@@ -94,7 +94,7 @@
     .about { padding: 100px 0; background: var(--black); }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .about-img-wrap { position: relative; }
-    .about-img { width: 100%; height: 480px; object-fit: cover; border-radius: 12px; filter: brightness(0.85); }
+    .about-img { width: 100%; height: 480px; object-fit: cover; object-position: center 15%; border-radius: 12px; filter: brightness(0.85); }
     .about-img-badge { position: absolute; bottom: -24px; left: -24px; background: var(--gold); color: var(--black); padding: 24px; border-radius: 12px; font-weight: 800; font-size: 1rem; line-height: 1.4; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
     .about-img-badge strong { font-size: 2rem; display: block; }
     .about-points { margin-top: 32px; display: flex; flex-direction: column; gap: 20px; }
