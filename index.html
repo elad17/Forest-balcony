@@ -286,12 +286,18 @@
         </div>
         <div class="contact-form reveal">
           <h3>השאירו פרטים ונחזור אליכם</h3>
-          <form action="mailto:bartzarfaty121@gmail.com" method="post" enctype="text/plain">
+          <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="34aec67e-d6b8-4105-aa3d-448a6bb5636b" />
+            <input type="hidden" name="subject" value="פנייה חדשה מהאתר — ניסים צרפתי ובניו" />
+            <input type="hidden" name="from_name" value="אתר ניסים צרפתי ובניו" />
+            <input type="hidden" name="redirect" value="false" />
             <div class="form-row"><div class="form-group"><label for="fname">שם מלא</label><input type="text" id="fname" name="שם" placeholder="ניסים לוי" required /></div><div class="form-group"><label for="fphone">טלפון</label><input type="tel" id="fphone" name="טלפון" placeholder="05X-XXXXXXX" required /></div></div>
             <div class="form-group"><label for="fsubject">נושא הפנייה</label><select id="fsubject" name="נושא"><option value="">בחרו נושא...</option><option>פינוי-בינוי</option><option>תמ&quot;א 38/2</option><option>חוק הקשיש</option><option>ייעוץ כללי</option><option>אחר</option></select></div>
             <div class="form-group"><label for="faddress">כתובת הנכס</label><input type="text" id="faddress" name="כתובת" placeholder="רחוב, עיר" /></div>
             <div class="form-group"><label for="fmessage">הודעה</label><textarea id="fmessage" name="הודעה" placeholder="ספרו לנו על הנכס שלכם..."></textarea></div>
-            <button type="submit" class="btn-submit">שלח פנייה ◄</button>
+            <button type="submit" class="btn-submit" id="submitBtn">שלח פנייה ◄</button>
+            <div id="formSuccess" style="display:none; margin-top:16px; padding:14px; background:rgba(201,168,76,0.15); border:1px solid #c9a84c; border-radius:8px; color:#c9a84c; text-align:center; font-weight:700;">✓ הפנייה נשלחה בהצלחה! נחזור אליכם בהקדם.</div>
+            <div id="formError" style="display:none; margin-top:16px; padding:14px; background:rgba(255,80,80,0.1); border:1px solid #ff5050; border-radius:8px; color:#ff5050; text-align:center;">שגיאה בשליחה. נסו שוב או פנו אלינו ישירות.</div>
           </form>
         </div>
       </div>
@@ -354,6 +360,34 @@
     }, { threshold: 0.5 });
     var statsBar = document.querySelector('.stats-bar');
     if (statsBar) statsObserver.observe(statsBar);
+
+    var contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.textContent = 'שולח...';
+        fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(contactForm) })
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            if (data.success) {
+              document.getElementById('formSuccess').style.display = 'block';
+              document.getElementById('formError').style.display = 'none';
+              contactForm.reset();
+            } else {
+              document.getElementById('formError').style.display = 'block';
+            }
+            btn.disabled = false;
+            btn.textContent = 'שלח פנייה ◄';
+          })
+          .catch(function() {
+            document.getElementById('formError').style.display = 'block';
+            btn.disabled = false;
+            btn.textContent = 'שלח פנייה ◄';
+          });
+      });
+    }
   </script>
 </body>
 </html>
