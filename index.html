@@ -355,12 +355,5 @@
     var statsBar = document.querySelector('.stats-bar');
     if (statsBar) statsObserver.observe(statsBar);
   </script>
-  <script>
-    fetch('assets/logo.webp?v=3').then(function(r){return r.text();}).then(function(b64){
-      b64 = b64.trim();
-      var src = 'data:image/webp;base64,' + b64;
-      document.querySelectorAll('.navbar-logo,.hero-logo,.footer-brand img').forEach(function(img){ img.src = src; });
-    });
-  </script>
 </body>
 </html>
